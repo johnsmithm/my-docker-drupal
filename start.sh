@@ -47,3 +47,7 @@ echo "4. Starting processes via supervisor."
 # Start lamp, make sure no PIDs lying around
 rm /var/run/apache2/apache2.pid /var/run/rsyslog.pid /var/run/rsyslogd.pid /var/run/mysqld/mysqld.pid /var/run/crond.pid 2>/dev/null 2>/dev/null
 supervisord -c /etc/supervisord.conf -n
+
+#todo: the logs hangs:   mysqld entered RUNNING state, process has stayed up for > than 1 seconds
+
+echo "5. Visit your site http:localhost:8003."
