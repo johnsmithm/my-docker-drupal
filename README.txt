@@ -12,3 +12,8 @@ In order to change the database setting delete the database variable from start.
 docker run -td -p 8003:80 -e "MYSQL_ROOT_PASSWORD=password" -v /tmp/data:/var/www/html --name v1.1 v1.1 
 
 the parameter MYSQL_ROOT_PASSWORD was deleted in the start.sh file and added in the run command.
+
+Install Docker on ubuntu 12
+sudo apt-get update
+sudo apt-get install docker-engine
+sudo apt-get install docker.io #not sure
