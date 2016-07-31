@@ -22,6 +22,7 @@ echo "02. cloning repo"
   git clone ${GIT_REPO} html
   cd html
 mkdir -p sites/default/files && chmod 755 sites/default && chown -R www-data:www-data sites/default/files;
+mv /tmp/settings.php sites/default/settings.php
 sed -i "s/placeholder_PWD/${MYSQL_ROOT_PASSWORD}/g" sites/default/settings.php
 sed -i "s/placeholder_DB/${MYSQL_DATABASE}/g" sites/default/settings.php
 sed -i "s/placeholder_USER/${MYSQL_USER}/g" sites/default/settings.php

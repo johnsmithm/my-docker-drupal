@@ -47,6 +47,7 @@ RUN easy_install supervisor
 
 #ADD ../. /var/www/html
 ADD ./start.sh /start.sh
+ADD ./settings.php /tmp/settings.php
 ADD ./000-default.conf /etc/apache2/sites-available/000-default.conf
 ADD ./foreground.sh /etc/apache2/foreground.sh
 ADD ./supervisord.conf /etc/supervisord.conf
