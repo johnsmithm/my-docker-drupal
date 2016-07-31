@@ -13,7 +13,7 @@ echo "01. setup apache"
   	MYSQL_HOST="192.168.148.199"
     MYSQL_USER="root"
     MYSQL_DATABASE="the1-reservation"
-    MYSQL_ROOT_PASSWORD="password"
+    #MYSQL_ROOT_PASSWORD="password1"
     MYSQL_PASSWORD="1"
 
   cd /var/www
