@@ -2,18 +2,25 @@ This repository contain a docker setup for drupal sites.
 It download the drupal files from git and link the database with parameters from run command.
 Drupal uses an external database.
 
-In order to run the container with standard setup:
-./run.sh
+DEPLOY DEVELOPMENT SITE:
+
+0.Install docker on your machine!
+1.Clone the repository
+2.Go to that repository
+3.Change the parameters in the run.sh command(database,username of the database, password, hostname)
+4.In order to run the container with standard setup:
+	sudo ./run.sh
 
 In order to visi the site go to: http:localhost:8003/
-In order to edit file go to /tmp/data 
+In order to edit files go to /tmp/data 
 
-In order to change the database setting delete the database variable from start.sh and set them in the run command:
-docker run -td -p 8003:80 -e "MYSQL_ROOT_PASSWORD=password" -v /tmp/data:/var/www/html --name v1.1 v1.1 
+SYNC CHANGES WITH PRODUCTION
+1. commit/push changes to github
+2. sync database with production database using drush(not configured yet)
 
-the parameter MYSQL_ROOT_PASSWORD was deleted in the start.sh file and added in the run command.
 
 Install Docker on ubuntu 12
+add docker update link to list of ubuntu updates
 sudo apt-get update
 sudo apt-get install docker-engine
-sudo apt-get install docker.io #not sure
+sudo apt-get install docker.io #not sure, not needed
