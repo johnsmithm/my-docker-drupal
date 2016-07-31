@@ -22,6 +22,7 @@ RUN apt-get -qy install git vim-tiny curl wget pwgen \
 RUN sudo apt-get install drush -y
 RUN sudo drush dl drush --destination='/usr/share' 
 
+#todo: drush is not upgraded! install docker with composer or set up the option 1 by default
 
 
 # Sample backup script
