@@ -24,3 +24,15 @@ add docker update link to list of ubuntu updates
 sudo apt-get update
 sudo apt-get install docker-engine
 sudo apt-get install docker.io #not sure, not needed
+
+Usefull docker commands:
+
+docker ps -a #existed containers but can be restarted
+docker ps #runing containers
+docker images # show inages
+docker start v1.1 
+docker stop v1.1 
+docker rm v1.1 
+sudo docker exec -it v1.1 bash # run shell of the continer with name v1.1
+
+# v1.1 is name(or containerID)
