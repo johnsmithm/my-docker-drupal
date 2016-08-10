@@ -54,6 +54,8 @@ ADD ./foreground.sh /etc/apache2/foreground.sh
 ADD ./supervisord.conf /etc/supervisord.conf
 ADD ./supervisord.d    /etc/supervisord.d
 
+ADD ./aliases.drushrc.php   /tmp/aliases.drushrc.php
+
 VOLUME ["/var/www/html", "/tmp/drupal"]
 
 WORKDIR /var

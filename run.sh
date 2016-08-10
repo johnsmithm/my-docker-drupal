@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PORT=8003
-PWD=psw
+PWD=pwd
 USER=root
 #dev1,dev2,life,stage
 DB=dev1
@@ -22,12 +22,12 @@ fi
 
 docker build -t ${NAME} .
 
-docker stop ${NAME}
-docker rm ${NAME}
+docker stop ${NAME}${DB}
+docker rm ${NAME}${DB}
 
 docker run -td -p ${PORT}:80 -e "MYSQL_ROOT_PASSWORD=${PWD}"  -e "MYSQL_USER=${USER}" \
-  -e "MYSQL_DATABASE=${DB}"  -e "MYSQL_HOST=${HOST}"  -v /tmp/${DB}:/var/www/html --name ${NAME} ${NAME}
+  -e "MYSQL_DATABASE=${DB}"  -e "MYSQL_HOST=${HOST}"  -v /tmp/${DB}:/var/www/html --name ${NAME}${DB} ${NAME}
 
-docker logs -f ${NAME}
+docker logs -f ${NAME}${DB}
 
-#docker run -ti ${NAME} /bin/bash
+#docker run -ti ${NAME}${DB} /bin/bash
