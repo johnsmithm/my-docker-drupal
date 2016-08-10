@@ -23,6 +23,7 @@ cd /var/www
 rm -rf html
 git clone ${GIT_REPO} html
 cd html
+git checkout stage
 mkdir -p sites/default/files && chmod 755 sites/default && chown -R www-data:www-data sites/default/files;
 
 echo "03. setting database"
@@ -31,6 +32,20 @@ sed -i "s/placeholder_PWD/${MYSQL_ROOT_PASSWORD}/g" sites/default/settings.php
 sed -i "s/placeholder_DB/${MYSQL_DATABASE}/g" sites/default/settings.php
 sed -i "s/placeholder_USER/${MYSQL_USER}/g" sites/default/settings.php
 sed -i "s/placeholder_HOST/${MYSQL_HOST}/g" sites/default/settings.php
+
+if [[ ${LOCAL_MYSQL} ]]; then
+    mysqladmin -u root password $MYSQL_ROOT_PASSWORD 
+    #echo "CREATE DATABASE $MYSQL_DATABASE; GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO $MYSQL_USER@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD'; FLUSH PRIVILEGES;"
+    mysql -uroot -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE $MYSQL_DATABASE; GRANT ALL PRIVILEGES ON ${MYSQL_DATABASE}.* TO $MYSQL_USER@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD'; FLUSH PRIVILEGES;"
+    # allow mysql cli for root
+    mv /root/.my.cnf.sample /root/.my.cnf
+    sed -i "s/ADDED_BY_START.SH/$MYSQL_ROOT_PASSWORD/" /root/.my.cnf 
+
+    #get database - maybe git
+    #copy database
+    #clear cache
+    #delete repo git
+fi
    
 # Create log that can be written to in the running container, and visible in the
 # docker log (stdout) and thus the webfact UI.
